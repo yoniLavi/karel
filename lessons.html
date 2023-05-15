@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+
+<head> 
+   <title>Learn to Program</title> 
+   <script src="js/html/websiteImports.js"></script>
+	<script>importCss();</script>
+	<script>importJs();</script>
+</head> 
+<body> 
+   <div id ='learnBody'>
+      <div id ='content'  class="learn">
+         <div id ='headerDiv'></div>
+         <div id ='centerAreaDiv'></div>
+         <div id ='progressBarDiv'></div>
+      </div>
+   </div>
+   <script>
+      function init() {
+         var learnEngine = null;
+         
+         window.onload = function() {
+            initTabs();
+            learnEngine = KarelLearnEngine();
+            window.onhashchange = learnEngine.onHashChange;      
+            window.onresize();
+            $("[title]").tooltip({ position: "top center", opacity: 0.9, tipClass: 'topTooltip'});
+         }    
+
+         window.onresize = function(){
+            if(learnEngine)learnEngine.onWindowResize();
+            ReferenceDialog.resize();
+         }     
+      }
+      init();
+   </script>
+
+</body> 
+
+
+</html>

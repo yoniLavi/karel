@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+
+<head> 
+   <title>Karel IDE</title> 
+   <script src="js/html/websiteImports.js"></script>
+	<script>importCss();</script>
+	<script>importJs();</script>
+
+</head> 
+
+<body> 
+
+   <script>
+      function init() {
+         
+         $.get('http://www.stanfordkarel.appspot.com/submitRemote?code=helloworld&amp;title=Program&amp;author=ChrisPiech', {} , function(data) {
+            alert(data);
+         });
+      }
+
+      init();
+
+   </script>
+
+</body> 
+
+
+</html>
