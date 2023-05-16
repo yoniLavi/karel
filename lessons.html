@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"> 
-
-
-<head> 
-   <title>Learn to Program</title> 
+<html lang="en">
+<head>
+   <title>Learn to Program</title>
    <script src="js/html/websiteImports.js"></script>
 	<script>importCss();</script>
 	<script>importJs();</script>
-</head> 
-<body> 
-   <div id ='learnBody'>
-      <div id ='content'  class="learn">
-         <div id ='headerDiv'></div>
-         <div id ='centerAreaDiv'></div>
-         <div id ='progressBarDiv'></div>
+</head>
+<body>
+   <div id="learnBody">
+      <div id="content"  class="learn">
+         <div id="headerDiv"></div>
+         <div id="centerAreaDiv"></div>
+         <div id="progressBarDiv"></div>
       </div>
    </div>
    <script>
@@ -25,7 +23,7 @@
             learnEngine = KarelLearnEngine();
             window.onhashchange = learnEngine.onHashChange;      
             window.onresize();
-            $("[title]").tooltip({ position: "top center", opacity: 0.9, tipClass: 'topTooltip'});
+            $("[title]").tooltip({position: "top center", opacity: 0.9, tipClass: 'topTooltip'});
          }    
 
          window.onresize = function(){
@@ -35,8 +33,5 @@
       }
       init();
    </script>
-
-</body> 
-
-
+</body>
 </html>

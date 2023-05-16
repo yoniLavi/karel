@@ -10,12 +10,19 @@ function main(){\n\
 var WORLDS = [
    '15x15',
    '9x9',
-   '8x8',
-   '7x7',
-   '5x5',
+   '8x2',
+   '7x12',
+   '1x6',
    '4x4',
-   '3x3',
-   'maze'
+   '12x12',
+   '14x13',
+   '30x30',
+   '50x50',
+   '60x60',
+   'maze',
+   'collectNewspaper',
+   'ledge',
+   'stepper',
 ]
 
 var INITIAL_WORLD = '15x15'

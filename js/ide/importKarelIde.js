@@ -13,7 +13,7 @@
  * <script src="js/importKarelIde.js"></script>
  */
 function ImportKarelIde(settings) {
-
+   // TODO: Check if this is still necessary - it seems to actually be loaded from starterCode.js
    // User Interface Constants
    var KAREL_IDE_ID = 'karelIde';
    var WORLDS = [

@@ -892,6 +892,3 @@ function Unit1Lesson1(finishedCallback) {
    ];
    return PictureDemo(buttonSrcs, labels, finishedCallback, true);
 }
-
-
-

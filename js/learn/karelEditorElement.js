@@ -43,7 +43,7 @@ function KarelEditorElement(dim, parentId) {
       }
       
       that.editor.insert(nextChar);
-      setTimeout(animateCharType, 60);
+      setTimeout(animateCharType, 10);
       
    }
 

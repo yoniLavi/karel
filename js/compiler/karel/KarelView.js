@@ -18,9 +18,8 @@
 //   colors should be represented.
 
 function KarelView(world, id) {
-   if (!id) id = "world";
    this.world = world;
-   this.canvas = document.getElementById(id);
+   this.canvas = document.getElementById(id || "world");
    this.canvas.width = this.canvas.offsetWidth;
    this.canvas.height = this.canvas.offsetHeight;
 }
