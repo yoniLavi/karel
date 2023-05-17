@@ -23,6 +23,7 @@ var WORLDS = [
    'collectNewspaper',
    'ledge',
    'stepper',
+   'trees',
 ]
 
 var INITIAL_WORLD = '15x15'
