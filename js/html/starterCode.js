@@ -8,17 +8,18 @@ function main(){\n\
 }\n";
 
 var WORLDS = [
-   '15x15',
-   '9x9',
-   '8x2',
-   '7x12',
-   '1x6',
    '4x4',
+   '5x5',
+   '9x9',
+   '15x15',
    '12x12',
    '14x13',
    '30x30',
    '50x50',
    '60x60',
+   '1x6',
+   '8x2',
+   '7x12',
    'maze',
    'collectNewspaper',
    'ledge',
