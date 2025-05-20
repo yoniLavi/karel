@@ -6,11 +6,11 @@ changeRow();
 colorRow();
 }
 
-function changeRow(){
+function changeRow() {
 turnLeft();
 move();
 turnLeft();
-while(frontIsClear()){
+while (frontIsClear()) {
 move();
 }
 turnLeft();
@@ -18,15 +18,15 @@ turnLeft();
 }
 
 function colorRow() {
-while(frontIsClear()) {
+while (frontIsClear()) {
 colorSquare();
 move();
 }
 colorSquare();
 }
 
-function colorSquare(){
-if(random(0.3)){
+function colorSquare() {
+if (random(0.3)){
 paintCorner('green');
 } else {
 paintCorner('blue');

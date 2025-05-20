@@ -1,12 +1,12 @@
 // Teach karel to turnAround
 
-// This function teaches Karel 
+// This function teaches Karel
 // how to turn around.
 function turnAround() {
 // your code here
 }
 
-function main(){
+function main() {
 move();
 putBeeper();
 turnAround();

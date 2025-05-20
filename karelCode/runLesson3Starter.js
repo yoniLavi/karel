@@ -1,7 +1,7 @@
 //change this program
 //so that Karel moves
 //three steps
-function main(){
+function main() {
 move();
 move();
 }

@@ -3,5 +3,5 @@
 //of any world.
 // You can assume that all
 // worlds are odd-sized squares.
-function main(){
+function main() {
 }

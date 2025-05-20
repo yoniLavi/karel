@@ -5,8 +5,8 @@ function main() {
 putBeeperLine();
 }
 
-function putBeeperLine(){
-while(frontIsClear()) {
+function putBeeperLine() {
+while (frontIsClear()) {
 move();
 putBeeper();
 }

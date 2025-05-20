@@ -1,7 +1,7 @@
 //This program makes
 //Karel place a square
 //of beepers
-function main(){
+function main() {
 putBeeper();
 move();
 turnLeft();

@@ -1,10 +1,10 @@
-//This program will make 
+//This program will make
 //karel pick up a pile of
 //beepers no matter how big
 //the pile is
 function main() {
 move();
-while(beepersPresent()) {
+while (beepersPresent()) {
 pickBeeper();
 }
 move();

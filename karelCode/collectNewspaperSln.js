@@ -1,7 +1,7 @@
 // Write your karel javascript
-// code in this text area. 
+// code in this text area.
 
-function run() { 
+function run() {
 
     moveToNewspaper();
     pickBeeper();
@@ -15,7 +15,7 @@ function turnAround() {
 }
 
 function moveToWall() {
-    while(frontIsClear()) {
+    while (frontIsClear()) {
         move();
     }
 }
@@ -36,4 +36,3 @@ function moveToNewspaper() {
     turnLeft();
     move();
 }
-

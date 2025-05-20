@@ -1,11 +1,11 @@
 // Write your karel javascript
-// code in this text area. 
+// code in this text area.
 
-function run() { 
+function run() {
 
     placeLineOfBeepers();
 
-    while(true) {
+    while (true) {
         pickBeeper();
         turnAround();
         move();
@@ -22,11 +22,11 @@ function run() {
 }
 
 function moveToLastBeeper() {
-    while(frontIsClear() &&
+    while (frontIsClear() &&
           beeperPresent()) {
         move();
     }
-    
+
     if (!beeperPresent()) {
         turnAround();
         move();
@@ -36,7 +36,7 @@ function moveToLastBeeper() {
 }
 
 function moveToWall() {
-    while(frontIsClear()) {
+    while (frontIsClear()) {
         move();
     }
 }
@@ -47,7 +47,7 @@ function turnAround() {
 }
 
 function placeLineOfBeepers() {
-    while(frontIsClear()) {
+    while (frontIsClear()) {
         putBeeper();
         move();
     }

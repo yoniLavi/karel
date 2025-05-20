@@ -2,7 +2,7 @@
 //so that Karel moves
 //to the top of the
 //ledge
-function main(){
+function main() {
 turnLeft();
 move();
 }

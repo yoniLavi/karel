@@ -5,8 +5,8 @@ function main() {
 moveToWall();
 }
 
-function moveToWall(){
-while(frontIsClear()) {
+function moveToWall() {
+while (frontIsClear()) {
 // you fill this in
 }
 }

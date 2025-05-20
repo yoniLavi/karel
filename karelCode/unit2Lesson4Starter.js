@@ -6,7 +6,7 @@ move();
 
 //This teaches Karel
 //how to turn right
-function turnRight(){
+function turnRight() {
 turnLeft();
 turnLeft();
 turnLeft();
