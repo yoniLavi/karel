@@ -13,9 +13,6 @@
 //   update faster since it wouldn't be necessary to redraw most of
 //   the world.
 
-// TO DO:
-//   paintCorner is not implemented.  I need to think about how
-//   colors should be represented.
 
 function KarelView(world, id) {
    this.world = world;
@@ -71,6 +68,10 @@ KarelView.prototype.repaint = function() {
       var y = y0 + (rows - pt.y + 0.5) * sqSize;
       for (pt.x = 1; pt.x <= cols; pt.x++) {
          var x = x0 + (pt.x - 0.5) * sqSize;
+         var color = world.getCornerColor(pt);
+         if (color) {
+            this.drawColoredCorner(ctx, x, y, sqSize, color);
+         }
          var nBeepers = world.getBeepersOnCorner(pt);
          if (nBeepers > 0) {
             var label = (nBeepers == 1) ? "" : "" + nBeepers;
@@ -111,6 +112,16 @@ KarelView.prototype.drawBeeper = function(ctx, x, y, sqSize, label) {
    ctx.restore();
 };
 
+KarelView.prototype.drawColoredCorner = function(ctx, x, y, sqSize, color) {
+   var cornerSize = sqSize * KarelView.CORNER_COLOR_FRACTION;
+   ctx.save();
+   ctx.fillStyle = color;
+   ctx.beginPath();
+   ctx.rect(x - cornerSize / 2, y - cornerSize / 2, cornerSize, cornerSize);
+   ctx.fill();
+   ctx.restore();
+};
+
 KarelView.prototype.drawKarel = function(ctx, x, y, sqSize, dir) {
    var karelSize = sqSize * KarelView.KAREL_FRACTION_SMALL;
    ctx.save();
@@ -143,5 +154,7 @@ KarelView.BEEPER_LABEL_FONT = "sans-serif";
 KarelView.BEEPER_LABEL_DY = 0.42;
 
 KarelView.TICK_FRACTION = 0.1;
+
+KarelView.CORNER_COLOR_FRACTION = 0.8;
 
 KarelView.KAREL_FRACTION_SMALL = 0.60;

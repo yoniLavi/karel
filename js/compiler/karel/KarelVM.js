@@ -43,9 +43,10 @@ KarelVM.prototype.atStatementBoundary = function() {
    return !this.cf || this.cf.code[this.cf.pc].name == "stmt";
 };
 
-function KarelCall(fn) {
+function KarelCall(fn, params) {
    this.name = "call";
    this.fn = fn;
+   this.params = params || [];
 }
 
 KarelCall.prototype.toString = function() {
@@ -60,19 +61,67 @@ KarelCall.prototype.legalFn = function(fn, userFns) {
 }
 
 KarelCall.prototype.compile = function(vm, exp, code) {
-   
    var fn = exp[1];
    if (!this.legalFn(fn, vm.userFnNames)){
       throw new Error("Undefined operator \"" + fn + "\"");
    }
-   code.push(new KarelCall(fn));
+
+   // Check if there are parameters
+   var params = [];
+   if (exp.length > 2 && exp[2]) {
+      params = exp[2];
+   }
+
+   code.push(new KarelCall(fn, params));
 };
 
 KarelCall.prototype.execute = function(vm) {
    if (Karel.instructions[this.fn]) {
-      vm.karel[this.fn]();
+      // Process parameters
+      var params = [];
+      if (this.params && this.params.length > 0) {
+         for (var i = 0; i < this.params.length; i++) {
+            var param = this.params[i];
+            if (param[0] === "string") {
+               params.push(param[1]);
+            } else if (param[0] === "number") {
+               params.push(param[1]);
+            } else if (param[0] === "identifier") {
+               // For now, we don't support variable parameters
+               throw new Error("Variable parameters are not supported yet");
+            }
+         }
+      }
+
+      // Call the function with parameters
+      if (params.length > 0) {
+         vm.karel[this.fn].apply(vm.karel, params);
+      } else {
+         vm.karel[this.fn]();
+      }
    } else if (Karel.predicates[this.fn]) {
-      vm.push(vm.karel[this.fn]());
+      // Process parameters for predicates
+      var params = [];
+      if (this.params && this.params.length > 0) {
+         for (var i = 0; i < this.params.length; i++) {
+            var param = this.params[i];
+            if (param[0] === "string") {
+               params.push(param[1]);
+            } else if (param[0] === "number") {
+               params.push(param[1]);
+            } else if (param[0] === "identifier") {
+               // For now, we don't support variable parameters
+               throw new Error("Variable parameters are not supported yet");
+            }
+         }
+      }
+
+      // Call the predicate with parameters
+      if (params.length > 0) {
+         vm.push(vm.karel[this.fn].apply(vm.karel, params));
+      } else {
+         vm.push(vm.karel[this.fn]());
+      }
    } else {
       vm.call(this.fn, vm.functions[this.fn]);
    }

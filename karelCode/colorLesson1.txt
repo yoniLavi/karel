@@ -14,5 +14,3 @@ paintCorner('blue');
 move();
 paintCorner('purple');
 }
-
-main();

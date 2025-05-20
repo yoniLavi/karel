@@ -1,17 +1,14 @@
-//Karel knows a condition "random" 
+//Karel knows a condition "random"
 //that returns yes half of the time!
 function main() {
-for(var i = 0; i < 100; i++){
-if(random()) {
-turnLeft();
+while (frontIsClear()) {
+if (noBeepersPresent()) {
+  putBeeper();
+}
+if (random()) {
+  turnLeft();
 } else {
-safeMove();
+  move();
 }
-}
-}
-
-function safeMove() {
-if(frontIsClear()){
-move();
 }
 }

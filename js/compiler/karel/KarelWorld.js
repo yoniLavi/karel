@@ -197,7 +197,10 @@ KarelWorld.prototype.wallCommand = function(scanner) {
 };
 
 KarelWorld.prototype.setColorCommand = function(scanner) {
-   throw new Error("Not yet implemented");
+   var pt = this.scanPoint(scanner);
+   var color = scanner.nextToken();
+   scanner.verifyToken(";");
+   this.setCornerColor(pt, color);
 };
 
 KarelWorld.prototype.setSpeed = function(speed) {
@@ -290,6 +293,8 @@ KarelWorld.prototype.save = function() {
       for (pt.x = 1; pt.x <= this.width; pt.x++) {
          var nBeepers = this.getBeepersOnCorner(pt);
          if (nBeepers > 0) str += "Beeper: " + pt + " " + nBeepers + "\n";
+         var color = this.getCornerColor(pt);
+         if (color) str += "SetColor: " + pt + " " + color + "\n";
       }
    }
    for (var i = 0; i < this.karels.length; i++) {

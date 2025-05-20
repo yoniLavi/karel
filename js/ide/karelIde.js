@@ -1,9 +1,7 @@
-
-
 /**
  * Class: Karel IDE
  * ---------
- * This is the main class for the Karel Ide. It provides the 
+ * This is the main class for the Karel Ide. It provides the
  * API availible to manipulate Karel. This class is in charge
  * of maintaining the karelImages singleton and making sure
  * that Karel doesn't try to render before images have been
@@ -16,7 +14,7 @@ function KarelIde(editor, canvas, initialWorld) {
 
    // constants
    var ACTION_HEARTBEATS = 5;
-   var HEART_BEAT = 5;	
+   var HEART_BEAT = 5;
    var REFRESH_HEARTBEATS = 100;
    var DEFAULT_CANVAS_WIDTH = 370;
    var DEFAULT_CANVAS_HEIGHT = 370;
@@ -44,7 +42,7 @@ function KarelIde(editor, canvas, initialWorld) {
     * --------------
     * Setup the variables, create a animation callback loop
     * and load images.
-    */ 
+    */
    function init() {
       if (canvas) {
          canvas.width = canvasModel.getWidth();
@@ -57,7 +55,7 @@ function KarelIde(editor, canvas, initialWorld) {
       } else {
          imagesLoaded();
       }
-      setInterval(heartbeat, HEART_BEAT);	
+      setInterval(heartbeat, HEART_BEAT);
    }
 
    //--------------- PUBLIC METHODS ---------------------//
@@ -213,10 +211,10 @@ function KarelIde(editor, canvas, initialWorld) {
       if (!worldLoaded) throw new Error('TRIED TO RUN BEFORE WORLD LOADED');
       var code = getCode();
       that.runSpecificCode(code, finishedCallback)
-      
+
    }
 
-   
+
 
 
    //----------------------------- PRIVATE METHODS --------------------------//
@@ -229,7 +227,7 @@ function KarelIde(editor, canvas, initialWorld) {
                if(finishedCallback) finishedCallback(false);
                break;
             }
-         }      
+         }
       } catch (karelError) {
          if(finishedCallback) finishedCallback(true);
       }
@@ -259,7 +257,7 @@ function KarelIde(editor, canvas, initialWorld) {
    /**
     * Function: ImagesLoaded
     * ------------
-    * This method is the callback for when images have finished loading. 
+    * This method is the callback for when images have finished loading.
     * Updates the imagesReady flag and loads the current world.
     * Usage: karelImages.loadImages(imagesLoaded);
     */
@@ -271,11 +269,11 @@ function KarelIde(editor, canvas, initialWorld) {
    /**
     * Function: WorldFileLoaded
     * ------------
-    * This method is the callback for when a world has finished loading. 
+    * This method is the callback for when a world has finished loading.
     * Updates the karelWorld instance and redraws the canvas.
     * Usage: loadDoc(worldUrl, worldFileLoaded);
     */
-   function worldFileLoaded(text) {	
+   function worldFileLoaded(text) {
       karel.loadWorld(text, canvasModel);
       draw();
       worldLoaded = true;
@@ -376,4 +374,3 @@ function KarelIde(editor, canvas, initialWorld) {
    init();
    return that;
 }
-

@@ -23,6 +23,7 @@ KarelParser.prototype.defineOperators = function() {
 
 KarelParser.statementForms = { };
 
+
 KarelParser.statementForms["if"] = function(parser) {
    parser.verifyToken("(");
    var exp = parser.readPredicate();
@@ -83,9 +84,40 @@ KarelParser.prototype.readStatement = function() {
    var prop = KarelParser.statementForms[token];
    if (prop) return prop(this);
    this.verifyToken("(");
-   this.verifyToken(")");
+
+   // Check if there are parameters
+   var params = [];
+   var nextToken = this.nextToken();
+   if (nextToken != ")") {
+      this.saveToken(nextToken);
+      while (true) {
+         var param = this.readParameter();
+         params.push(param);
+         nextToken = this.nextToken();
+         if (nextToken == ")") break;
+         if (nextToken != ",") {
+            throw new Error("Expected ',' or ')' but found \"" + nextToken + "\"");
+         }
+      }
+   }
+
    this.verifyToken(";");
-   return [ "stmt", [ "call", token ] ];
+   return [ "stmt", [ "call", token, params ] ];
+};
+
+KarelParser.prototype.readParameter = function() {
+   var token = this.nextToken();
+   var tokenType = TokenScanner.getTokenType(token);
+
+   if (tokenType == TokenScanner.STRING) {
+      return ["string", TokenScanner.getString(token)];
+   } else if (tokenType == TokenScanner.NUMBER) {
+      return ["number", TokenScanner.getNumber(token)];
+   } else if (this.scanner.isValidIdentifier(token)) {
+      return ["identifier", token];
+   } else {
+      throw new Error("Invalid parameter: " + token);
+   }
 };
 
 KarelParser.prototype.readPredicate = function() {

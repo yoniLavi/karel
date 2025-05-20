@@ -63,8 +63,11 @@ Karel.prototype.pickBeeper = function() {
    this.world.setBeepersOnCorner(this.pt, DECREMENT);
 };
 
-Karel.prototype.paintCorner = function() {
-   throw new Error("The paintCorner instruction is not yet implemented");
+Karel.prototype.paintCorner = function(color) {
+   if (!color) {
+      throw new Error("paintCorner requires a color parameter");
+   }
+   this.world.setCornerColor(this.pt, color);
 };
 
 /* Karel predicates */
@@ -157,6 +160,13 @@ Karel.prototype.notFacingWest = function() {
 Karel.prototype.random = function(p) {
    if (p === undefined) p = 0.50;
    return Math.random() < p;
+};
+
+Karel.prototype.cornerColorIs = function(color) {
+   if (!color) {
+      throw new Error("cornerColorIs requires a color parameter");
+   }
+   return this.world.getCornerColor(this.pt) === color;
 };
 
 /* Karel methods */
